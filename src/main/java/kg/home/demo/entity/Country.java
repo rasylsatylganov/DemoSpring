@@ -30,4 +30,9 @@ public class Country {
 
     @Column(name = "ORDER_NUMBER")
     private Integer orderNumber;
+
+    // 👇 Связь "много стран → один регион"
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "REGION_ID", nullable = false)
+    private Region region;
 }

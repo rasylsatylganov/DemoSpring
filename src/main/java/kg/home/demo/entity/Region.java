@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "REGION")
 @Data
@@ -30,4 +32,8 @@ public class Region {
 
     @Column(name = "ORDER_NUMBER")
     private Integer orderNumber;
+
+    // 👇 Связь "один регион → много стран"
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Country> countries;
 }
