@@ -1,5 +1,6 @@
 package kg.home.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,5 +36,6 @@ public class Region {
 
     // 👇 Связь "один регион → много стран"
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Country> countries;
 }

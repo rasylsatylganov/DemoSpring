@@ -1,5 +1,6 @@
 package kg.home.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,5 +35,6 @@ public class Country {
     // 👇 Связь "много стран → один регион"
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "REGION_ID", nullable = false)
+    @JsonBackReference
     private Region region;
 }
